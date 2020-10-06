@@ -1,0 +1,47 @@
+{
+  "name": "fullstack-boilerplate",
+  "version": "1.0.0",
+  "description": "Fullstack setup for React.js, Express.js, Mongodb, Mongoose, Babel and Webpack",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./server/server.js",
+    "dev": "webpack-dev-server --mode development",
+    "build": "webpack --config ./webpack.config.js"
+  },
+  "keywords": [
+    "fullstack",
+    "boilerplate",
+    "react.js",
+    "express.js",
+    "mongodb",
+    "mongoose",
+    "babel",
+    "webpack"
+  ],
+  "author": "Bryan Wong",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.6.2",
+    "mongoose": "^5.10.7",
+    "morgan": "^1.10.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-hot-loader": "^4.13.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.11.6",
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^4.3.0",
+    "style-loader": "^1.2.1",
+    "url-loader": "^4.1.0",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  }
+}

@@ -1,0 +1,184 @@
+/*
+* Wrapper for the subscribe modal
+* Keep a h:w ratio of 1:1.31 
+*/
+.sub-modal-wrapper {
+    display: flex;
+    position: relative;
+    width: 964px;
+    height: 706px;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #FFFFFF;
+    margin: 32px 0 8px 0;
+}
+.cancel-icon{
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    left: 97.5%;
+    top: -3%;
+    border-radius: 100px;
+    background-color: #FFFFFF;
+    box-shadow: -4px 14px 68px -11px rgba(0,0,0,0.75);
+    -moz-box-shadow: -4px 14px 68px -11px rgba(0,0,0,0.75);
+    -webkit-box-shadow: -4px 14px 68px -11px rgba(0,0,0,0.75);
+}
+.cancel-icon:hover{
+    cursor: pointer;
+    display:flex;
+}
+.cancel-icon:hover >  div{
+    background-color: #C0C6C4;
+    border-color: #C0C6C4;
+}
+.bar1, .bar2 {
+    width: 24px;
+    top: 50%;
+    left: 25%;
+    background-color: #07171B;
+    border: 1px solid #07171B;
+    position: absolute;
+}
+.bar1{
+    transform: rotate(45deg);
+}
+.bar2{
+    transform: rotate(-45deg);
+} 
+
+.sub-desc-wrapper {
+    width: 360px;
+    height: 631px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sub-desc-title {
+    margin-top: 13.4%;
+}
+
+.sub-end-text{
+    text-align: center;
+    opacity: 0.5;
+}
+
+.sub-desc {
+    margin-top: 7%;
+}
+
+.sub-form {
+    margin-top: 8%;
+    height: 26.15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sub-input {
+    height: 45.45%;
+    border: 2px solid #C0C6C4;
+    border-radius: 5px;
+    padding-left: 2%;
+}
+
+.sub-btn {
+    height: 45.45%;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(90deg, #FDECBA, #EDB507);
+}
+
+.sub-form > input[type="email" i]::placeholder { 
+    /* Chrome, opera, safari*/
+    text-indent: 8%;
+} 
+.sub-form > input[type="email" i]:-ms-input-placeholder {               
+    /* Internet Explorer 10-11 */ 
+    text-indent: 8%;
+}
+
+.sub-end-text {
+    margin-top: 4.28%;
+}
+
+@media screen and (max-width: 1000px) {
+    .sub-modal-wrapper {
+        width: 395px;
+        height: 528px;
+        border-radius: 15px;
+        margin-top: 24px;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .sub-modal-wrapper > img {
+        width: 130px;
+        height: 130px;
+        object-fit: cover;
+        object-position: 0 90%;
+        border-radius: 100px;
+        border: 8px solid rgba(87, 100, 144, 0.5);
+    }
+    .sub-modal-wrapper > img:hover {
+        border: 8px solid rgba(87, 100, 144, 1);
+    }
+    .cancel-icon{
+        width: 44px;
+        height: 44px;
+        background-color: transparent;
+        border: 2px solid rgba(87, 100, 144, 0.5);
+        left: 83%;
+        top: 4%;
+    }
+    .bar1, .bar2 {
+        width: 16px;
+        top: 45%;
+        left: 29%;
+    }
+    .sub-desc-wrapper {
+        width: 295px;
+        height: 288px;
+    }
+    .sub-form {
+        min-height: 109px;
+        justify-content: space-around;
+    }    
+    .sub-input {
+        height: 54px;
+    }
+    .sub-btn {
+        height: 45px;
+    }
+    .sub-end-text {
+        margin: 2% 0;
+    }
+
+}
+
+@media screen and (max-width: 400px){
+    .sub-modal-wrapper {
+        width: 300px;
+        height: 400px;
+    }
+    .sub-modal-wrapper > img {
+        width: 90px;
+        height: 90px;
+    }
+    .sub-desc-wrapper {
+        width: 224px;
+        height: 255px;
+    }
+    .cancel-icon {
+        left: 79%;
+        top: 4%;
+    }
+    .sub-desc-title {
+        margin-top: 8%;
+    }
+    .sub-input {
+        height: 45px;
+    }
+    .sub-btn {
+        height: 35px;
+    }
+}
