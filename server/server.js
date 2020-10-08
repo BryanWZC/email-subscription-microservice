@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
+const fetch = require('node-fetch');
 const path = require('path');
 require('dotenv').config({path: path.join(__dirname, '../.env')});
 
@@ -24,7 +25,7 @@ const email = new mongoose.Schema({
         unique: true
     },
     mailjetUserId: {
-        type: Number,
+        type: String,
         required: true,
         unique: true
     },
@@ -66,6 +67,8 @@ app.get('/emails', async (req, res) => {
 app.post('/submit', async (req, res) => {
     try {
     const email = req.body.email.trim();
+    if(!(await verifyEmail(email))) throw 'Not valid email';
+
     const mailjetMessageId = await sendEmailGetMessageId(email);
     const mailjetUserId = await getUserId(mailjetMessageId);
 
@@ -92,10 +95,23 @@ function errorHandler(err, req, res, next){
     res.redirect('/404');
 }
 
-async function findUserAndUpdate(email, userId){
-    return await Email.findOneAndUpdate({email}, {$push: {mailjetMessageId: [userId]}}, {useFindAndModify: false});
+/**
+ * Updates database with email and mailjet identifiers
+ * 
+ * @param  {String} email            - Email to find in database
+ * @param  {String} mailjetMessageId - Message Id to potentially append within database if email found
+ * @return {object}                  - Returns result of query
+ */
+async function findUserAndUpdate(email, mailjetMessageId){
+    return await Email.findOneAndUpdate({email}, {$push: {mailjetMessageId: [mailjetMessageId]}}, {useFindAndModify: false});
 }
 
+/**
+ * Mask the email by replacing part of the username with '*'
+ * 
+ * @param  {string} email - email to be masked
+ * @return {string}       - masked email
+ */
 function coverEmails(email) {
     const arr = email.split('@');
     const username = arr[0];
@@ -103,4 +119,23 @@ function coverEmails(email) {
     return length > 3 ?
         `${username.slice(0,3).padEnd(length, '*')}@${arr.slice(1).join()}` :
         `${username[0].padEnd(length, '*')}@${arr.slice(1).join()}`;
+}
+
+/**
+ * Verifies if an email is legitimate using the whoisxml API
+ * 
+ * @param  {String} email - email to be verified
+ * @return {Promise}      - true if verified and false if not
+ */
+async function verifyEmail(email){
+    const request = process.env.WHO_IS_XML_API + email;
+    const response = await (await fetch(request)).json();
+    const {ErrorMessage, formatCheck, smtpCheck, dnsCheck, disposableCheck} = response;
+    if( 
+        ErrorMessage ||
+        formatCheck === 'false' ||
+        smtpCheck === 'false' || 
+        dnsCheck === 'false' || 
+        disposableCheck === 'true' ) return false;
+    return true;
 }
