@@ -36,7 +36,7 @@
     color: #FFFFFF;
 }
 
-@media screen and (max-width: 970px) {
+@media screen and (max-width: 1000px) {
     .fs-large {
         font-size: 22px;
     }
@@ -54,7 +54,7 @@
     }
 }
 
-@media screen and (max-width: 970px) {
+@media screen and (max-width: 400px) {
     .fs-large {
         font-size: 16px;
     }

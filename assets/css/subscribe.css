@@ -98,6 +98,10 @@
     text-indent: 8%;
 }
 
+.sub-form > .sub-btn:hover {
+    cursor: pointer;
+}
+
 .sub-end-text {
     margin-top: 4.28%;
 }
