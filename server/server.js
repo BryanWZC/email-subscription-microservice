@@ -81,7 +81,7 @@ app.post('/submit', async (req, res) => {
     }
 });
 
-app.listen(3000, 
+app.listen(process.env.PORT || 3000, 
     async () => {
         await connect();
         console.log('Server is running. Listening on port 3000.');

@@ -1,8 +1,6 @@
 # Folders
-# node_modules
+node_modules
 
 # Files
 .env
 .sketch
-node_modules
- 
