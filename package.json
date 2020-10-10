@@ -1,7 +1,7 @@
 {
-  "name": "fullstack-boilerplate",
+  "name": "email-subscription-microservice",
   "version": "1.0.0",
-  "description": "Fullstack setup for React.js, Express.js, Mongodb, Mongoose, Babel and Webpack",
+  "description": "A microservice that sends you a welcome email and allows access to the email list API",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -17,7 +17,9 @@
     "mongodb",
     "mongoose",
     "babel",
-    "webpack"
+    "webpack",
+    "email services",
+    "responsive design"
   ],
   "author": "Bryan Wong",
   "license": "ISC",
