@@ -69,11 +69,7 @@ app.post('/submit', async (req, res) => {
     const email = req.body.email.trim();
     if(!(await verifyEmail(email))) throw 'Not valid email';
 
-    const mailjetMessageId = await sendEmailGetMessageId(email);
-    const mailjetUserId = await getUserId(mailjetMessageId);
-
-    const findUpdate = await findUserAndUpdate(email, mailjetUserId);
-    if(!findUpdate) await Email.create({ email, mailjetUserId, mailjetMessageId});
+    updateDB();
 
     res.status(200).redirect('/sent');
     } catch (error) {
@@ -138,4 +134,17 @@ async function verifyEmail(email){
         dnsCheck === 'false' || 
         disposableCheck === 'true' ) return false;
     return true;
+}
+
+/**
+ * Updates DB with the given email, creating a new doc if email does not already exists.
+ * @param {String} email - Validated email 
+ */
+async function updateDB(email){
+    const mailjetMessageId = await sendEmailGetMessageId(email);
+    const mailjetUserId = await getUserId(mailjetMessageId);
+
+    const findUpdate = await findUserAndUpdate(email, mailjetUserId);
+    if(!findUpdate) await Email.create({ email, mailjetUserId, mailjetMessageId});
+    return;
 }
