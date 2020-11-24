@@ -68,8 +68,8 @@ app.post('/submit', async (req, res) => {
     try {
     const email = req.body.email.trim();
     if(!(await verifyEmail(email))) throw 'Not valid email';
-
-    updateDB();
+    
+    sendEmailUpdateDB(email);
 
     res.status(200).redirect('/sent');
     } catch (error) {
@@ -140,7 +140,7 @@ async function verifyEmail(email){
  * Updates DB with the given email, creating a new doc if email does not already exists.
  * @param {String} email - Validated email 
  */
-async function updateDB(email){
+async function sendEmailUpdateDB(email){
     const mailjetMessageId = await sendEmailGetMessageId(email);
     const mailjetUserId = await getUserId(mailjetMessageId);
 
