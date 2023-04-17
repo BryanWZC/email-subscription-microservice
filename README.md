@@ -1,7 +1,7 @@
 # Email Subscription Microservice 
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://awesome-email-subs.herokuapp.com/)
-&nbsp;
+<!--[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://awesome-email-subs.herokuapp.com/)
+&nbsp;-->
 
 An email subscription modal that sends an email to you when you subscribe and stores the email in a database. 
 
